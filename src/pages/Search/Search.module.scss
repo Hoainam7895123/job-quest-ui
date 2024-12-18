@@ -1,0 +1,57 @@
+.wrapper {
+    background-color: #f3f5f7;
+    padding: 24px 160px;
+}
+.inner {
+}
+.title {
+    color: #00b14f;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    display: flex;
+    padding: 16px;
+
+    form {
+        display: flex;
+        gap: 16px;
+    }
+}
+
+select {
+    padding: 8px 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.filter-btn {
+    position: absolute;
+    right: 20px;
+
+    background-color: #fff;
+    border: 1px solid #a6a6a6;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #ddd;
+}
+
+.search-result {
+    padding-top: 20px;
+}

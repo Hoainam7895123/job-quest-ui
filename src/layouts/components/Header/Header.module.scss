@@ -1,0 +1,205 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000; /* Đảm bảo header nằm trên các thành phần khác */
+}
+
+.inner {
+    padding: 0 24px;
+    display: flex; /* Thiết lập Flexbox cho thẻ cha */
+    justify-content: space-between;
+    height: 72px;
+}
+
+.left {
+    display: flex;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+.right .nav li:not(:last-child) {
+    margin-right: 10px;
+}
+
+.logo {
+    margin-right: 50px;
+    img {
+        height: 72px;
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li > a {
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.235px;
+        line-height: 20px;
+        margin: 14px 5px;
+        padding: 12px 15px;
+    }
+}
+
+.employer {
+    p {
+        color: #7f878f;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        margin: 0 0 4px;
+        padding: 0;
+    }
+    a {
+        align-items: center;
+        color: #263a4d;
+        display: flex;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 22px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .double-right-icon {
+        margin-left: 5px;
+    }
+}
+
+.dividing-line {
+    background: linear-gradient(0deg, hsla(210, 4%, 91%, 0), #e6e7e8 31.5%, #e6e7e8 70%, hsla(210, 4%, 91%, 0));
+    height: 40px;
+    margin: 0 15px;
+    width: 1px;
+}
+
+.action-btn {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 177, 79, 0.102);
+    border-radius: 50%;
+    margin-right: 12px;
+    .bell-icon,
+    .message-icon {
+        color: #00b14f;
+        text-align: center;
+        font-size: 20px;
+    }
+}
+
+.avatar {
+    align-items: center;
+    background: #fafafa;
+    border-radius: 20px;
+    border-radius: 40px;
+    column-gap: 6px;
+    display: flex;
+    height: 40px;
+    padding: 4px 6px 4px 4px;
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
+    .down-icon {
+        color: #00b14f;
+        text-align: center;
+        font-size: 15px;
+    }
+}
+
+// HeadlessTippy
+.headless-wrapper {
+    display: flex;
+    opacity: 1;
+}
+
+.navbar-menu {
+    background: #fff;
+    display: block;
+    margin: 0;
+    max-height: 88vh;
+    overflow: auto;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.dropdown-menu {
+    display: flex;
+    padding: 0 7px;
+    position: relative;
+
+    img {
+        border-radius: 50%;
+        height: 32px;
+        margin: inherit;
+        margin-right: 16px;
+        width: 32px;
+    }
+}
+
+.navbar-menu-item {
+    background: #f4f5f5;
+    border-radius: 6px;
+    margin: 8px 0;
+    min-width: 368px;
+    position: relative;
+
+    a {
+        align-items: center;
+        color: #212f3f;
+        display: flex;
+        font-size: 14px;
+        font-weight: 500 !important;
+        line-height: 20px;
+        padding-bottom: 14px;
+        padding-top: 14px;
+    }
+
+    &:hover {
+        a {
+            color: #00b14f;
+        }
+    }
+}
+
+.caption {
+    padding-bottom: 6px;
+    text-align: left;
+
+    p {
+        margin-bottom: 4px;
+    }
+
+    .name {
+        color: #00b14f;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+
+    .description {
+        color: #6f7882;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+
+    .code {
+        color: #212f3f;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+    }
+}

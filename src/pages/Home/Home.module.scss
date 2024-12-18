@@ -1,0 +1,94 @@
+.wrapper {
+}
+.job-list {
+    background-color: #f3f5f7;
+    padding: 24px 160px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 20px 25px 20px 40px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 177, 79, 0.102);
+    background-repeat: no-repeat;
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 0;
+        margin-right: auto;
+        margin-top: 0;
+    }
+}
+
+.guide {
+    display: flex;
+    background: #f0f6ff;
+    border: 1px solid #82afed;
+    border-radius: 6px;
+    margin: 12px 0 0;
+    padding: 6px 8px;
+    position: relative;
+    p {
+        color: #263a4d;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: 0.14px;
+        line-height: 16px;
+        margin-bottom: 0;
+
+        b {
+            padding-right: 5px;
+        }
+    }
+}
+
+.bulb-icon {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: 17px;
+    width: 17px;
+    padding-right: 10px;
+    color: #4180d9;
+}
+
+.company-container {
+    padding: 0 160px;
+}
+
+.company-list {
+    margin: 50px 0;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.company-title {
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 34px 32px 35px;
+    position: relative;
+    margin-bottom: 30px;
+    h2 {
+        color: #0e4a2c;
+        flex-wrap: wrap;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 0.24px;
+        line-height: 133%;
+        margin: 0;
+    }
+}
+
+.company-items {
+    padding: 0 24px 24px;
+}
