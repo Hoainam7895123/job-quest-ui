@@ -10,7 +10,13 @@ import images from '~/assets/images';
 import Button from '~/components/Button/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleRight, faAngleDown, faBell, faMessage } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDoubleRight,
+    faAngleDown,
+    faBell,
+    faMessage,
+    faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
@@ -94,7 +100,7 @@ function Header() {
                     </ul>
                 </div>
                 <div className={cx('right')}>
-                    {!!user ? (
+                    {user ? (
                         <>
                             <div className={cx('employer')}>
                                 <p>Bạn là nhà tuyển dụng?</p>
@@ -138,12 +144,9 @@ function Header() {
                                                         </div>
                                                     </div>
                                                     <li className={cx('navbar-menu-item')}>
-                                                        <a
-                                                            href="https://www.topcv.vn/cai-dat-thong-tin-ca-nhan"
-                                                            className={cx('text-sm')}
-                                                        >
+                                                        <Link to="/profile" className={cx('text-sm')}>
                                                             Cài đặt thông tin cá nhân
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                     <li className={cx('navbar-menu-item')}>
                                                         <a
@@ -160,6 +163,12 @@ function Header() {
                                                         >
                                                             Kích hoạt quà tặng
                                                         </a>
+                                                    </li>
+                                                    <li className={cx('navbar-menu-item')}>
+                                                        <Link to="/login" className={cx('text-sm')}>
+                                                            <FontAwesomeIcon icon={faRightFromBracket} />
+                                                            Logout
+                                                        </Link>
                                                     </li>
                                                 </ul>
                                             </div>

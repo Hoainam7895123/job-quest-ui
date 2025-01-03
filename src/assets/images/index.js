@@ -10,6 +10,18 @@ const images = {
     blog2: require('~/assets/images/blog-2.jpg'),
     blog3: require('~/assets/images/blog-3.jpg'),
     footer_bg: require('~/assets/images/footer-bg.jpg'),
+    congty1: require('~/assets/images/congty1.jpg'),
+    congty2: require('~/assets/images/congty2.jpg'),
+    congty3: require('~/assets/images/congty3.jpg'),
+    congty4: require('~/assets/images/congty4.jpg'),
+    congty5: require('~/assets/images/congty5.jpg'),
+    congty6: require('~/assets/images/congty6.jpg'),
+    congty7: require('~/assets/images/congty7.jpg'),
+    congty8: require('~/assets/images/congty8.jpg'),
+    congty9: require('~/assets/images/congty9.jpg'),
+    congty10: require('~/assets/images/congty10.jpg'),
+    congty11: require('~/assets/images/congty11.jpg'),
+    congty12: require('~/assets/images/congty12.jpg'),
 };
 
 export default images;

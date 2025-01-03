@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100px;
+    height: 200px;
     padding: 0 160px;
     background-color: #19734e;
     background-size: contain; /* Đảm bảo ảnh vừa với phần tử mà không bị cắt */
@@ -28,6 +28,18 @@
 .search-box {
     form {
         display: flex;
+        flex-direction: column; /* Sắp xếp các div theo chiều dọc (các thẻ div nằm trên các dòng) */
+    }
+    .form-top {
+        display: flex;
+    }
+    .filter-container {
+        display: flex;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    .filter-item {
     }
 }
 

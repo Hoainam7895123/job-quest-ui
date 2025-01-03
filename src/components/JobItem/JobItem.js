@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function JobItem({ data }) {
+function JobItem({ data, companyId }) {
+    const companyImage = images[`congty${companyId}`];
+
     return (
         <div className={cx('wrapper')}>
             <Link to={`/job-detail?id=${data._id}`}>
                 <div className={cx('company-avatar')}>
-                    <img src={data.userId.recruiter.photo || images.volvo} alt="logo" />
+                    <img src={companyImage} alt="logo" />
                 </div>
             </Link>
             <div className={cx('content')}>

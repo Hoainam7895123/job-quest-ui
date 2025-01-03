@@ -1,25 +1,26 @@
 import classNames from 'classnames/bind';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import styles from './Login.module.scss';
+import styles from '~/pages/Login/Login.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGoogle, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
 
-function Login() {
-    const navigate = useNavigate();
-
+function Register() {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
+        confirmPassword: '',
+        type: 'applicant', // Giá trị cố định
+        name: '',
     });
 
-    const handleChange = (e) => {
+    const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -28,28 +29,49 @@ function Login() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
+
+        // Kiểm tra mật khẩu khớp
+        if (formData.password !== formData.confirmPassword) {
+            alert('Mật khẩu và xác nhận mật khẩu không khớp!');
+            return;
+        }
+
+        // Chuẩn bị body để gọi API
+        const apiBody = {
+            email: formData.email,
+            password: formData.password,
+            type: formData.type,
+            name: formData.name,
+            education: [
+                {
+                    institutionName: 'HaUI',
+                    startYear: 2021,
+                    endYear: 2025,
+                },
+            ],
+            skills: '1',
+        };
+
         try {
-            const response = await fetch('http://localhost:3000/auth/login', {
+            const response = await fetch('http://localhost:3000/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(apiBody),
             });
 
-            if (!response.ok) {
-                throw new Error('Đăng nhập không thành công');
+            if (response.ok) {
+                const data = await response.json();
+                alert('Đăng ký thành công!');
+                console.log(data);
+            } else {
+                const error = await response.json();
+                alert(`Đăng ký thất bại: ${error.message}`);
             }
-
-            const data = await response.json();
-            console.log('Đăng nhập thành công:', data);
-            // Thêm xử lý sau khi đăng nhập thành công (như lưu token, chuyển trang...)
-            navigate('/'); // Chuyển hướng đến trang chủ
-            localStorage.setItem('token', data.token);
         } catch (error) {
-            console.error('Lỗi khi đăng nhập:', error.message);
-            // Thêm xử lý khi gặp lỗi (hiển thị thông báo lỗi...)
+            alert(`Đã xảy ra lỗi: ${error.message}`);
         }
     };
 
@@ -67,6 +89,26 @@ function Login() {
                         <form onSubmit={handleSubmit}>
                             <div className={cx('form-group')}>
                                 <label for="email" className={cx('mb-1')}>
+                                    Họ và tên
+                                </label>
+                                <div className={cx('input-group', ' mb-3', 'input-group-custom')}>
+                                    <div className={cx()}>
+                                        <span className={cx('input-group-text')}>
+                                            <FontAwesomeIcon className={cx('input-icon')} icon={faUser} />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className={cx('form-control')}
+                                        placeholder="Họ và tên"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className={cx('form-group')}>
+                                <label for="email" className={cx('mb-1')}>
                                     Email
                                 </label>
                                 <div className={cx('input-group', ' mb-3', 'input-group-custom')}>
@@ -80,15 +122,14 @@ function Login() {
                                         name="email"
                                         className={cx('form-control')}
                                         placeholder="Email"
-                                        aria-label="Email"
-                                        onChange={handleChange}
                                         value={formData.email}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                             </div>
                             <div className={cx('form-group')}>
                                 <label for="password" className={cx('mb-1')}>
-                                    Password
+                                    Mật khẩu
                                 </label>
                                 <div className={cx('input-group', ' mb-3', 'input-group-custom')}>
                                     <div className={cx()}>
@@ -98,14 +139,31 @@ function Login() {
                                     </div>
                                     <input
                                         type="password"
-                                        id="password"
                                         name="password"
                                         className={cx('form-control')}
                                         placeholder="Mật khẩu"
-                                        aria-label="Mật khẩu"
-                                        data-gtm-form-interact-field-id="0"
-                                        onChange={handleChange}
                                         value={formData.password}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className={cx('form-group')}>
+                                <label for="password" className={cx('mb-1')}>
+                                    Xác nhận mật khẩu
+                                </label>
+                                <div className={cx('input-group', ' mb-3', 'input-group-custom')}>
+                                    <div className={cx()}>
+                                        <span className={cx('input-group-text')}>
+                                            <FontAwesomeIcon className={cx('input-icon')} icon={faLock} />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="password"
+                                        name="confirmPassword"
+                                        className={cx('form-control')}
+                                        placeholder="Xác nhận mật khẩu"
+                                        value={formData.confirmPassword}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                             </div>
@@ -114,7 +172,7 @@ function Login() {
                             </div>
                             <div className={cx('form-group', 'mt-3')}>
                                 <button className={cx('btn-login')} type="submit">
-                                    Đăng nhập
+                                    Đăng ký
                                 </button>
                                 <p className={cx('or')}>Hoặc đăng nhập bằng</p>
                             </div>
@@ -134,7 +192,7 @@ function Login() {
                                 </a>
                             </div>
                             <div className={cx('login-question')}>
-                                Bạn chưa có tài khoản? <Link to={config.routes.register}>Đăng ký ngay</Link>
+                                Bạn đã có tài khoản? <Link to={config.routes.login}>Đăng nhập ngay</Link>
                             </div>
                         </form>
                     </div>
@@ -144,4 +202,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

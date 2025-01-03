@@ -69,9 +69,9 @@ function Home() {
                         </p>
                     </div>
                     <div className="row">
-                        {data.map((job, index) => (
-                            <div className="col-md-4 mb-4" key={job.id || index}>
-                                <JobItem data={job} />
+                        {data.slice(0, 12).map((job, index) => (
+                            <div className="col-md-4 mb-4" key={index}>
+                                <JobItem data={job} companyId={index + 1} />
                             </div>
                         ))}
                     </div>
@@ -88,9 +88,9 @@ function Home() {
                             <p>Những thương hiệu tuyển dụng đã khẳng định được vị thế trên thị trường.</p>
                         </div>
                         <div className={cx('row', 'company-items')}>
-                            {users.map((company, index) => (
-                                <div className={cx('col-md-4 mb-4')} key={company.id || index}>
-                                    <CompanyItem data={company} />
+                            {users.slice(0, 12).map((company, index) => (
+                                <div className={cx('col-md-4 mb-4')} key={index}>
+                                    <CompanyItem data={company} companyId={index + 1} />
                                 </div>
                             ))}
                         </div>
